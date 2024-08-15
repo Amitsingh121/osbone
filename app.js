@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-// Use bodyParser to parse JSON request bodies
+// Here i'm using bodyParser to parse JSON request bodies
 app.use(bodyParser.json());
 
 // Define routes
@@ -12,6 +12,17 @@ const bookmarkRoutes = require('./routes/bookmark');
 
 // Apply the auth middleware to the routes
 app.use('/api/bookmarks', bookmarkRoutes);
+
+// // notes routs 
+// const noteRoutes = require('./routes/note'); 
+
+// // basic rout 
+// app.use('/notes', noteRoutes);
+// notes routes 
+const noteRoutes = require('./routes/note'); 
+
+// Use the notes routes
+app.use('/notes', noteRoutes);
 
 // Basic route
 app.get('/', (req, res) => {
